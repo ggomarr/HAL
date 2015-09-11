@@ -15,6 +15,7 @@ alice_libs = [ 'reduction?.safe.aiml',
                'mp?.aiml',
                '*.aiml' ]
 
+greeting = 'Hello! My name is Hal. Happy to serve!'
 end_cue = 'goodbye'
 
 listen = True
@@ -48,6 +49,11 @@ if listen:
         pass
     print("Set minimum energy threshold to {}".format(listenah.energy_threshold))
 
+if speak:
+    speaker = pyttsx.init()
+    speaker.say(greeting)
+    speaker.runAndWait()
+    del speaker
 
 input_txt=''
 while input_txt != end_cue:

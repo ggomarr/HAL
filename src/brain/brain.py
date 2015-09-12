@@ -4,29 +4,29 @@ Created on Sep 11, 2015
 @author: ggomarr
 '''
 
-import aiml
+from chatbot.chatbot import chatbot
+import parameters.brain_conf as parameters
 
 class brain:
     '''
     Create the central processing system and offer methods to read answers from it
     '''
     
-    def __init__(self, bot_brain):
-        self.bot_brain = bot_brain
-        self.bot = aiml.Kernel()
-        self.bot.loadBrain(bot_brain)
+    def __init__(self):
+        self.chatbot = chatbot()
 
-    def process_phrase(self, phrase=''):
-        answer = self.bot.respond(phrase)
+    def parse_input(self, phrase=''):
+        answer = self.chatbot.process_phrase(phrase)
         return answer
         
 if __name__ == "__main__":        
-    bot_brain = '/home/ggomarr/eclipse/workspace/PyAIML/01 Alice/brain/alice.brain'
     end_cue  = 'computer shut down'
     input_txt = ''
     
-    brn = brain(bot_brain)
-    while input_txt != end_cue:
-        input_txt = raw_input("?> ")
-        answer_txt = brn.process_phrase(input_txt)
+    brn = brain()
+    while True:
+        input_txt = raw_input("YOU >>> ")
+        if input_txt == end_cue:
+            break
+        answer_txt = brn.parse_input(input_txt)
         print answer_txt

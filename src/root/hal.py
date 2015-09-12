@@ -9,13 +9,13 @@ from listener.listener import listener
 from alarm.alarm import alarm
 from brain.brain import brain
 
-import parameters
+import parameters.cues_conf as parameters
 
 if __name__ == "__main__":    
-    alm = alarm(parameters.listener_type, parameters.julius_conf)
-    lsn = listener(parameters.listener_type,parameters.min_energy_threshold)
-    brn = brain(parameters.bot_brain)
-    spk = speaker(parameters.speaker_type, parameters.speaker_lang)
+    alm = alarm()
+    lsn = listener()
+    brn = brain()
+    spk = speaker()
         
     spk.say(parameters.greeting)
     
@@ -30,7 +30,7 @@ if __name__ == "__main__":
             last_input = lsn.listen_for_input()
             if last_input == parameters.end_cue:
                 break
-            last_answer = brn.process_phrase(last_input)
+            last_answer = brn.parse_input(last_input)
             spk.say(last_answer)
 
     spk.say(parameters.goodbye)

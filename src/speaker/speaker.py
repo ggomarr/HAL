@@ -5,7 +5,7 @@ Created on Sep 11, 2015
 '''
 
 import gtts, pyttsx
-import requests, tempfile, os
+import requests, tempfile, os, random
 import parameters.speaker_conf as parameters
 
 class speaker:
@@ -20,33 +20,33 @@ class speaker:
             self.say = self.say_pyttsx
         else:
             self.say = self.say_shell
+        random.seed()
     
     def say_gTTS(self, txt):
-        if txt=='':
-            txt='Sorry, I do not know what to say!'
+        txt = random.choice(txt)
         temp_mp3 = tempfile.mkstemp()[1]
         try:
+            print 'HAL >>> ' + txt
             speech = gtts.gTTS(text=txt,lang=parameters.speaker_lang)
             speech.save(temp_mp3)
             os.system("mpg123 " + temp_mp3)
         except requests.exceptions.ConnectionError:
             print "Error: No connection or connection timed out. Reverting to pyttsx."
             self.say = self.say_pyttsx
-            self.say(txt)
+            self.say([ txt ])
         os.remove(temp_mp3)
         
     def say_pyttsx(self, txt):
-        if txt=='':
-            txt='Sorry, I do not know what to say!'
+        txt = random.choice(txt)
+        print 'HAL >>> ' + txt
         speech = pyttsx.init()
         speech.say(txt)
         speech.runAndWait()
         del speech
         
     def say_shell(self, txt):
-        if txt=='':
-            txt='Sorry, I do not know what to say!'
-        print 'Bot >>> ' + txt
+        txt = random.choice(txt)
+        print 'HAL >>> ' + txt
 
 if __name__ == "__main__":
     spk = speaker('shell')

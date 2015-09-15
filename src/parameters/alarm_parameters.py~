@@ -1,0 +1,15 @@
+'''
+Created on Sep 11, 2015
+
+@author: ggomarr
+'''
+
+# Listener
+#    'mic' for voice
+#    'shell' for terminal
+
+listener_type = 'shell'
+julius_conf = '/home/ggomarr/eclipse/workspace/PyAIML/src/alarm/julius/julian.jconf' # Only affects mic
+min_energy_threshold = 5000
+
+

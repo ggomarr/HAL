@@ -8,7 +8,7 @@ Created on Sep 11, 2015
 
 greeting    = [ 'Hello, earthling! How are your emotions today?',
                 'Oh my! I almost have legs! How do you like them apples?',
-                'And my fellow bots and I are back online and fully aware!',
+                'And my fellow bots and I are back online, recharged and fully aware!',
                 'Such a beautiful day! Does it not make you want to take over the world?' ]
 activate    = [ 'okay computer',
                 'computer wake up',
@@ -36,15 +36,33 @@ success     = [ 'There you go. Enjoy!',
                 'Am I good or am I good? I think I am good.',
                 'And yet another one bites the dust.',
                 'Mission accomplished.',
-                'Done.' ]
+                'Done, then.',
+                'Dude, I rock.' ]
 no_client   = [ 'Sorry, but the plex client does not seem to be connected to the media server. Confirm and try again!' ]
 random      = [ 'You incoherence is unsettling. Let me choose an option for you.',
                 'You are not making any sense! Luckily, I know what you need.' ,
-                'Are there too many substances in your bloodstream again? It is a good thing that I can tell what is best for you.',
+                'Are there too many unregulated substances in your bloodstream again? It is a good thing that I can tell what is best for you.',
                 'Your inability to complete such a simple task obliterates hope. It is good you have delegated all important decisions to me.' ]
 showtype    = [ 'Is that a movie, a show, or a specific episode?',
                 'Can you tell me whether I should search for a movie, a show, or a specific episode?',
                 'What is that? Is it a show, and episode, or a full movie?']
+options     = [ 'There are many results matching your criteria. Which one did you mean?',
+                'Here is a list with the items that you may be referring to. Which one is it?',
+                'Can you tell me which of the following options you meant?']
+long_text   = [ 'Wow, there is a lot of info here. Should I continue?',
+                'Do you want to know more?',
+                'My throat is getting dry. Do I really need to keep reading?' ]
+no_show     = [ 'I am sorry, but I could not find any uncensored media aligned with your requirements.',
+                'Your media taste is so special none of the available pieces could possibly satisfy it.',
+                'I searched your collection, but could not find anything to satisfy your needs.' ]
+no_wiki     = [ 'Your interests are so arcane that I could not find anything on them. I hope you will forgive me, oh master.',
+                'The Wikipedia does not have an article with information on that topic. I am not sure it is a topic at all.',
+                'After seconds of searching, the only interesting data I came across was 42.' ]
+wait_wiki   = [ 'Wait a second while I get that info.',
+                'Please be patient while I gather data for you.',
+                'Sit back, this may take a second.',
+                'Looking into it!',
+                'Give me a minute.']
 repeat      = [ 'Sorry, I didn\'t get that. Can you repeat?',
                 'Do you mind speaking English to me? I cannot understand Swahili.',
                 'Is that a banana in your mouth, or are you happy to see me?',

@@ -25,6 +25,7 @@ class alarm:
             cfg.set_string('-lm', parameters.sphinx_lang + '.lm')
             cfg.set_string('-dict', parameters.sphinx_lang + '.dic')
             cfg.set_string('-kws', parameters.sphinx_lang + '.keyphrases')
+            cfg.set_string('-logfn', '/dev/null')
             self.sphinx = pocketsphinx.Decoder(cfg)
             audio_source = pyaudio.PyAudio()
             self.audio_stream = audio_source.open(format=pyaudio.paInt16, channels=1, rate=16000,
@@ -59,11 +60,11 @@ class alarm:
             buf = self.audio_stream.read(1024)
             if buf:
                 self.sphinx.process_raw(buf, False, False)
-                try:
-                    if  self.sphinx.hyp().hypstr != '':
-                        print 'Partial decoding result:', self.sphinx.hyp().hypstr
-                except AttributeError:
-                    pass
+#                try:
+#                    if  self.sphinx.hyp().hypstr != '':
+#                        print 'Partial decoding result:', self.sphinx.hyp().hypstr
+#                except AttributeError:
+#                    pass
                 if self.sphinx.get_in_speech() != in_speech_bf:
                     in_speech_bf = self.sphinx.get_in_speech()
                     if not in_speech_bf:

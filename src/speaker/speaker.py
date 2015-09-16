@@ -29,7 +29,7 @@ class speaker:
             print 'HAL >>> ' + txt
             speech = gtts.gTTS(text=txt,lang=parameters.speaker_lang)
             speech.save(temp_mp3)
-            os.system("mpg123 " + temp_mp3)
+            os.system("mpg123 " + temp_mp3 + " > /dev/null 2>&1")
         except requests.exceptions.ConnectionError:
             print "Error: No connection or connection timed out. Reverting to pyttsx."
             self.say = self.say_pyttsx

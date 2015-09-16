@@ -50,4 +50,4 @@ if __name__ == "__main__":
         if input_txt == end_cue:
             break
         answer_txt = bot.process_phrase(input_txt)
-        print answer_txt
+        print "BOT >>> " + answer_txt

@@ -22,7 +22,9 @@ if __name__ == "__main__":
             phrase = alm.listen_for_alarm()
         if phrase in cues.end_cue:
             break
+        print "YOU >>> " + phrase
         brn.take_over()
 
+    print "YOU >>> " + phrase
     brn.spk.say(cues.goodbye)
     

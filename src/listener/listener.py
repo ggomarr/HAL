@@ -34,7 +34,7 @@ class listener:
             try:
                 utterance = self.listenah.listen(source,timeout)
             except speech_recognition.WaitTimeoutError:
-                print("You were too slow")
+                print("[You were too slow]")
             pass
         if utterance!='':
             try:

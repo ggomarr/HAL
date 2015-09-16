@@ -8,6 +8,7 @@ from speaker.speaker import speaker
 from listener.listener import listener
 from chatbot.chatbot import chatbot
 from plexcontroller.plexcontroller import plexcontroller
+from wikireader.wikireader import wikireader
 import parameters.brain_conf as parameters
 import parameters.cues_conf as cues
 import parameters.regex_conf as regex
@@ -23,6 +24,7 @@ class brain:
         self.spk = speaker()
         self.lsn = listener()
         self.plx = plexcontroller()
+        self.wkp = wikireader()
 
     def take_over(self):
         self.spk.say(cues.serve)
@@ -32,43 +34,79 @@ class brain:
             parsed = self.parse_input(phrase, regex.reg_main)
             if   parsed[0] == parameters.plex_action:
                 if parsed[1] == parameters.pause_action:
-                    self.plx.pause_show()
-                    self.spk.say(cues.success)
+                    if   self.plx.pause_show():
+                        self.spk.say(cues.success)
+                    else:
+                        self.spk.say(cues.no_client)
                 elif parsed[1] == parameters.resume_action:
-                    self.plx.resume_show()
-                    self.spk.say(cues.success)
+                    if self.plx.resume_show():
+                        self.spk.say(cues.success)
+                    else:
+                        self.spk.say(cues.no_client)
                 elif parsed[1] == parameters.stop_action:
-                    self.plx.stop_show()
-                    self.spk.say(cues.success)
+                    if self.plx.stop_show():
+                        self.spk.say(cues.success)
+                    else:
+                        self.spk.say(cues.no_client)
                 else: # There is only play left
+                    still_searching = True
                     showtype_parsed = self.parse_input(phrase, regex.reg_showtype)
                     unwatched_parsed = self.parse_input(phrase, regex.reg_unwatched)
                     show_list = self.plx.search_shows(parsed[1],showtype_parsed[0],unwatched_parsed[0])           
-                    if len(show_list) == 1:
-                        show_to_play = show_list[0][1]
-                    elif showtype_parsed[0] == parameters.unknown:
+                    if still_searching:
+                        if len(show_list) == 0:
+                            still_searching = False
+                        elif len(show_list) == 1:
+                            still_searching = False
+                            show_to_play = show_list[0][1]
+                    if still_searching and showtype_parsed[0] == parameters.unknown:
                         self.spk.say(cues.showtype)
                         showtype_phrase = self.lsn.listen_for_input()
                         showtype_parsed = self.parse_input(showtype_phrase, regex.reg_showtype)
-                    show_list = self.plx.search_shows(parsed[1],showtype_parsed[0],unwatched_parsed[0])           
-                    if len(show_list) == 1:
-                        show_to_play = show_list[0][1]
-                    elif unwatched_parsed[0] == parameters.unknown:
+                        show_list = self.plx.search_shows(parsed[1],showtype_parsed[0],unwatched_parsed[0])           
+                        if len(show_list) == 0:
+                            still_searching = False
+                        elif len(show_list) == 1:
+                            still_searching = False
+                            show_to_play = show_list[0][1]
+                    if still_searching and unwatched_parsed[0] == parameters.unknown:
                         self.spk.say(cues.unwatched)
                         unwatched_phrase = self.lsn.listen_for_input()
                         unwatched_parsed = self.parse_input(unwatched_phrase, regex.reg_yesno)
-                    show_list = self.plx.search_shows(parsed[1],showtype_parsed[0],unwatched_parsed[0])           
-                    if len(show_list) == 1:
-                        show_to_play = show_list[0][1]
-                    else:
+                        show_list = self.plx.search_shows(parsed[1],showtype_parsed[0],unwatched_parsed[0])           
+                        if len(show_list) == 0:
+                            still_searching = False
+                        elif len(show_list) == 1:
+                            still_searching = False
+                            show_to_play = show_list[0][1]
+                    if still_searching:
+                        self.spk.say(cues.options)
                         selected_option = self.propose_options(show_list)
+                        still_searching = False
                         show_to_play = show_list[selected_option][1]
-                    if self.plx.play_show(show_to_play):
+                    if len(show_list) == 0:
+                        self.spk.say(cues.no_show)
+                    elif self.plx.play_show(show_to_play):
                         self.spk.say(cues.success)
                     else:
                         self.spk.say(cues.no_client)
             elif parsed[0] == parameters.wiki_action:
-                self.spk.say([ 'There should be a wiki action here, on ' + parsed[1] ])
+                if not self.wkp.retrieve_article(parsed[1]):
+                    self.spk.say(cues.options)
+                    selected_option = self.propose_options(self.wkp.content)
+                    self.wkp.retrieve_article(self.wkp.content[selected_option])
+                if len(self.wkp.content) == 0:
+                    self.spk.say(cues.no_wiki)
+                else:
+                    self.spk.say(cues.wait_wiki)
+                    for parag in self.wkp.content:
+                        self.spk.say(parag)
+                        self.spk.say(cues.long_text)
+                        continue_phrase = self.lsn.listen_for_input()
+                        continue_parsed = self.parse_input(continue_phrase, regex.reg_yesno)
+                        if continue_parsed[0] == parameters.negative_answer:
+                            self.spk.say(cues.success)
+                            break
             elif parsed[0] == parameters.chatbot_action:
                 answer = self.bot.process_phrase(parsed[1])
                 self.spk.say([ answer ])

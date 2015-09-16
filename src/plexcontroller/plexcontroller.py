@@ -30,7 +30,7 @@ class plexcontroller:
     def play_show(self, show_key, on_client=parameters.default_client):
         try:
             client = self.plex.client(on_client)
-        except NotFound:
+        except plexapi.exceptions.NotFound:
             return False
         show = self.plex.library.getByKey(show_key)
         client.playMedia(show)
@@ -39,7 +39,7 @@ class plexcontroller:
     def pause_show(self, on_client=parameters.default_client):
         try:
             client = self.plex.client(on_client)
-        except NotFound:
+        except plexapi.exceptions.NotFound:
             return False
         client.select()
         client.select()
@@ -48,7 +48,7 @@ class plexcontroller:
     def resume_show(self, on_client=parameters.default_client):
         try:
             client = self.plex.client(on_client)
-        except plexapi.server.NotFound:
+        except plexapi.exceptions.NotFound:
             return False
         client.select()
         client.select()
@@ -57,10 +57,11 @@ class plexcontroller:
     def stop_show(self, on_client=parameters.default_client):
         try:
             client = self.plex.client(on_client)
-        except plexapi.server.NotFound:
+        except plexapi.exceptions.NotFound:
             return False
         client.back()
         return True
 
 if __name__ == "__main__":
-    print "Hello world!"
+    plx = plexcontroller()
+    print plx.search_shows('3gqr3gq1')

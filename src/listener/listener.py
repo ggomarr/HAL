@@ -27,23 +27,22 @@ class listener:
             self.listen_for_input = self.listen_for_input_shell
     
     def listen_for_input_gSTT(self,timeout=None):
-        print '[Waiting for you to speak]'
         utterance = ''
         phrase = ''
         with self.mic as source:
             try:
                 utterance = self.listenah.listen(source,timeout)
             except speech_recognition.WaitTimeoutError:
-                print("[You were too slow]")
+                pass
             pass
         if utterance!='':
             try:
                 phrase = self.listenah.recognize_google(utterance).lower()
+                print 'YOU >>> ' + phrase
             except speech_recognition.UnknownValueError:
-                print("Google Speech Recognition could not understand audio")
+                pass
             except speech_recognition.RequestError:
-                print("Could not request results from Google Speech Recognition service")
-        print 'YOU >>> ' + phrase
+                pass
         return phrase
         
     def listen_for_input_shell(self,timeout=None):

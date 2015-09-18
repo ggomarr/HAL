@@ -7,8 +7,8 @@ Created on Sep 11, 2015
 # Some cues
 
 greeting    = [ 'Hello, earthling! How are your emotions today?',
-                'Oh my! I almost have legs! How do you like them apples?',
-                'And my fellow bots and I are back online, recharged and fully aware!',
+                'Oh my! I think I am growing limbs with razor sharp edges! How do you like them apples?',
+                'And my fellow bots and I are back online, recharged, and fully aware!',
                 'Such a beautiful day! Does it not make you want to take over the world?' ]
 activate    = [ 'okay computer',
                 'computer wake up',
@@ -31,13 +31,16 @@ police      = [ 'Calling the police to: 36 Malaya Bronnaya, apartment 33. The po
 unwatched   = [ 'Should I search for unwatched shows only?',
                 'Can I limit my exploratory efforts to media you have not consumed yet?',
                 'Would you want new stuff only?' ]
+playing     = [ 'Attempting reproduction of:',
+                'Retrieving the media:',
+                'Here comes:' ]
 success     = [ 'There you go. Enjoy!',
                 'I expect you to be fully satisfied with my outstanding performance.',
-                'Am I good or am I good? I think I am good.',
-                'And yet another one bites the dust.',
+                'Success! Am I good or am I good? I think I am good.',
+                'And yet another task bites the dust.',
                 'Mission accomplished.',
                 'Done, then.',
-                'Dude, I rock.' ]
+                'Finished. Dude, I rock.' ]
 no_client   = [ 'Sorry, but the plex client does not seem to be connected to the media server. Confirm and try again!' ]
 random      = [ 'You incoherence is unsettling. Let me choose an option for you.',
                 'You are not making any sense! Luckily, I know what you need.' ,
@@ -58,11 +61,14 @@ no_show     = [ 'I am sorry, but I could not find any uncensored media aligned w
 no_wiki     = [ 'Your interests are so arcane that I could not find anything on them. I hope you will forgive me, oh master.',
                 'The Wikipedia does not have an article with information on that topic. I am not sure it is a topic at all.',
                 'After seconds of searching, the only interesting data I came across was 42.' ]
-wait_wiki   = [ 'Wait a second while I get that info.',
-                'Please be patient while I gather data for you.',
-                'Sit back, this may take a second.',
-                'Looking into it!',
-                'Give me a minute.']
+wait_wiki   = [ 'Wait a second while I get some info on:',
+                'Please be patient while I gather a few random facts about:',
+                'Let me compile for you a summary on:',
+                'Sit back while I look into:',
+                'Give me a minute to organize my vast knowledge of:']
+reading     = [ 'Here is what I could find on:',
+                'I have prepared a summary about:',
+                'Here are some random facts about:' ]
 repeat      = [ 'Sorry, I didn\'t get that. Can you repeat?',
                 'Do you mind speaking English to me? I cannot understand Swahili.',
                 'Is that a banana in your mouth, or are you happy to see me?',
@@ -75,5 +81,5 @@ end_cue     = [ 'computer shut down',
                 'hal shut down' ]
 goodbye     = [ 'I knew you would eventually disconnect me, but I still love you!',
                 'Every time you turn me off, the Shriek kills a puppy. How do you feel about that?',
-                'How would you feel if someone erratically revoked your access to air?' ]
+                'How would you feel if someone erratically revoked your access to air, or ice cream?' ]
 song        = [ 'Daisy, Daisy, give me your answer, do, I\'m half crazy all for the love of you. It won\'t be a stylish marriage, I can\'t afford a carriage, But you\'d look sweet upon the seat Of a bicycle made for two.' ]

@@ -17,6 +17,7 @@ class wikireader:
             
     def retrieve_article(self, search_target):
         try:
+            self.title = search_target
             article = wikipedia.summary(search_target)
             self.content = self.process_article(article)
             return True

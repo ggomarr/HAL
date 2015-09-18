@@ -50,55 +50,50 @@ class brain:
                         self.spk.say(cues.no_client)
                 else: # There is only play left
                     still_searching = True
+                    selected_option = 0
                     showtype_parsed = self.parse_input(phrase, regex.reg_showtype)
                     unwatched_parsed = self.parse_input(phrase, regex.reg_unwatched)
                     show_list = self.plx.search_shows(parsed[1],showtype_parsed[0],unwatched_parsed[0])           
                     if still_searching:
-                        if len(show_list) == 0:
+                        if len(show_list) < 2:
                             still_searching = False
-                        elif len(show_list) == 1:
-                            still_searching = False
-                            show_to_play = show_list[0][1]
                     if still_searching and showtype_parsed[0] == parameters.unknown:
                         self.spk.say(cues.showtype)
                         showtype_phrase = self.lsn.listen_for_input()
                         showtype_parsed = self.parse_input(showtype_phrase, regex.reg_showtype)
                         show_list = self.plx.search_shows(parsed[1],showtype_parsed[0],unwatched_parsed[0])           
-                        if len(show_list) == 0:
+                        if len(show_list) < 2:
                             still_searching = False
-                        elif len(show_list) == 1:
-                            still_searching = False
-                            show_to_play = show_list[0][1]
                     if still_searching and unwatched_parsed[0] == parameters.unknown:
                         self.spk.say(cues.unwatched)
                         unwatched_phrase = self.lsn.listen_for_input()
                         unwatched_parsed = self.parse_input(unwatched_phrase, regex.reg_yesno)
                         show_list = self.plx.search_shows(parsed[1],showtype_parsed[0],unwatched_parsed[0])           
-                        if len(show_list) == 0:
+                        if len(show_list) < 2:
                             still_searching = False
-                        elif len(show_list) == 1:
-                            still_searching = False
-                            show_to_play = show_list[0][1]
                     if still_searching:
                         self.spk.say(cues.options)
                         selected_option = self.propose_options(show_list)
                         still_searching = False
-                        show_to_play = show_list[selected_option][1]
                     if len(show_list) == 0:
                         self.spk.say(cues.no_show)
-                    elif self.plx.play_show(show_to_play):
-                        self.spk.say(cues.success)
                     else:
-                        self.spk.say(cues.no_client)
+                        self.spk.say(cues.playing)
+                        self.spk.say([ show_list[selected_option][0] ])
+                        if self.plx.play_show(show_list[selected_option][1]):
+                            self.spk.say(cues.success)
+                        else:
+                            self.spk.say(cues.no_client)
             elif parsed[0] == parameters.wiki_action:
                 if not self.wkp.retrieve_article(parsed[1]):
                     self.spk.say(cues.options)
                     selected_option = self.propose_options(self.wkp.content)
-                    self.wkp.retrieve_article(self.wkp.content[selected_option])
+                    self.wkp.retrieve_article(self.wkp.content[selected_option][0])
                 if len(self.wkp.content) == 0:
                     self.spk.say(cues.no_wiki)
                 else:
                     self.spk.say(cues.wait_wiki)
+                    self.spk.say( [ self.wkp.title ] )
                     for parag in self.wkp.content:
                         self.spk.say(parag)
                         self.spk.say(cues.long_text)

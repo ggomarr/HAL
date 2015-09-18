@@ -17,14 +17,30 @@ class plexcontroller:
         
     def search_shows(self, search_target, show_type='', unwatched_only=False):
         result = self.plex.search(search_target, show_type)
-        if unwatched_only:
-            result = [ show for show in result if show.viewCount == 0 ]
-        answer =          [ [ 'the ' + show.type + ' ' + show.title, show.key[18:] ]
-                            for show in result if show.type == 'movie' ]
-        answer = answer + [ [ 'the ' + show.type + ' ' + show.title, show.key[18:] ]
-                            for show in result if show.type == 'show' ]
-        answer = answer + [ [ 'the ' + show.type + ' ' + show.title + ' from the show ' + show.show().title, show.key[18:] ]
-                            for show in result if show.type == 'episode' ]
+        
+        mov_lst = [ show for show in result if show.type == 'movie' ]
+        sho_lst = [ show for show in result if show.type == 'show' ]
+        epi_lst = [ show for show in result if show.type == 'episode' ]
+
+        answer = []
+        for mov in mov_lst:
+            if not unwatched_only or mov.viewCount == 0:
+                mov_key = mov.key.split('/')[3]
+                answer = answer + [ [ 'The movie ' + mov.title, mov_key ] ]
+        for sho in sho_lst:
+            sho_key = sho.key.split('/')[3]
+            if self.plex.library.getByKey(sho_key).unwatched():
+                sho_epi = self.plex.library.getByKey(sho_key).unwatched()[0]
+                epi_key = sho_epi.key.split('/')[3]
+                answer = answer + [ [ 'The show ' + sho.title, epi_key ] ]
+            elif not unwatched_only:
+                sho_epi = self.plex.library.getByKey(sho_key).episodes()[0]
+                epi_key = sho_epi.key.split('/')[3]
+                answer = answer + [ [ 'The show ' + sho.title, epi_key ] ]
+        for epi in epi_lst:
+            if not unwatched_only or epi.viewCount == 0:
+                epi_key = epi.key.split('/')[3]
+                answer = answer + [ [ 'The episode ' + epi.title + ' from the show ' + epi.show().title, epi_key ] ]
         return answer
         
     def play_show(self, show_key, on_client=parameters.default_client):

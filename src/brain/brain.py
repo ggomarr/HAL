@@ -94,14 +94,15 @@ class brain:
                 else:
                     self.spk.say(cues.wait_wiki)
                     self.spk.say( [ self.wkp.title ] )
-                    for parag in self.wkp.content:
-                        self.spk.say(parag)
+                    self.spk.say(self.wkp.content[0])
+                    for parag in self.wkp.content[1:]:
                         self.spk.say(cues.long_text)
                         continue_phrase = self.lsn.listen_for_input()
                         continue_parsed = self.parse_input(continue_phrase, regex.reg_yesno)
                         if continue_parsed[0] == parameters.negative_answer:
-                            self.spk.say(cues.success)
                             break
+                        self.spk.say(parag)
+                    self.spk.say(cues.success)
             elif parsed[0] == parameters.chatbot_action:
                 answer = self.bot.process_phrase(parsed[1])
                 self.spk.say([ answer ])

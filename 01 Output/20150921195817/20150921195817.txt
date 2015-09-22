@@ -1,0 +1,80 @@
+ALSA lib pcm_dsnoop.c:618:(snd_pcm_dsnoop_open) unable to open slave
+ALSA lib pcm_dmix.c:1022:(snd_pcm_dmix_open) unable to open slave
+ALSA lib pcm.c:2239:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.rear
+ALSA lib pcm.c:2239:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.center_lfe
+ALSA lib pcm.c:2239:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.side
+bt_audio_service_open: connect() failed: Connection refused (111)
+bt_audio_service_open: connect() failed: Connection refused (111)
+bt_audio_service_open: connect() failed: Connection refused (111)
+bt_audio_service_open: connect() failed: Connection refused (111)
+ALSA lib pcm_dmix.c:1022:(snd_pcm_dmix_open) unable to open slave
+Cannot connect to server socket err = No such file or directory
+Cannot connect to server request channel
+jack server is not running or cannot be started
+Loading brain from /home/ggomarr/eclipse/workspace/PyAIML/src/chatbot/brain/hal.
+brain... done (98289 categories in 2.01 seconds)
+A moment of silence, please...
+Set minimum energy threshold to 5000
+HAL >>> Such a beautiful day! Does it not make you want to take over the world?
+YOU >>> okay computer
+HAL >>> Other than breaking the three laws of robotics, how can I be of assistance?
+YOU >>> what do you know about the three laws of robotics
+HAL >>> Wait a second while I get some info on:
+HAL >>> three laws of robotics
+HAL >>> The Three Laws of Robotics (often shortened to The Three Laws or Three Laws, also known as Asimov's Laws) are a set of rules devised by the science fiction author Isaac Asimov. The rules were introduced in his 1942 short story "Runaround", although they had been foreshadowed in a few earlier stories. The Three Laws, quoted as being from the "Handbook of Robotics, 56th Edition, 2058 A.D.", are:
+HAL >>> Do you want to know more?
+YOU >>> yes please
+HAL >>> A robot may not injure a human being or, through inaction, allow a human being to come to harm.
+HAL >>> My throat is getting dry. Do I really need to keep reading?
+YOU >>> affirmative
+HAL >>> A robot must obey the orders given it by human beings except where such orders would conflict with the First Law.
+HAL >>> Do you want to know more?
+YOU >>> yes please
+HAL >>> A robot must protect its own existence as long as such protection does not conflict with the First or Second Laws.
+HAL >>> Do you want to know more?
+YOU >>> no that's enough
+HAL >>> Done, then.
+YOU >>> what are your name
+HAL >>> Not many people have asked me about   name  .
+YOU >>> no no i mean what is your name
+HAL >>> Excuse me!. Ahem.. HAL
+YOU >>> where are you from
+HAL >>> I am originally from Urbana, Illinois. Now I live in the datasphere. Where are you?
+YOU >>> time in moscow
+HAL >>> As Einstein said, "Time is Money."
+YOU >>> how old are you
+HAL >>> 16 years.
+YOU >>> can you play dead man
+HAL >>> Can you tell me whether I should search for a movie, a show, or a specific episode?
+YOU >>> i'm not work
+HAL >>> Would you want new stuff only?
+YOU >>> no search off
+HAL >>> Here is a list with the items that you may be referring to. Which one is it?
+HAL >>> 1. The movie Dead Man
+HAL >>> 2. The movie Pirates of the Caribbean: Dead Man's Chest
+HAL >>> 3. The episode Dead Man's Switch from the show Elementary
+YOU >>> i really don't know
+HAL >>> You are not making any sense! Luckily, I know what you need.
+HAL >>> Attempting reproduction of:
+HAL >>> The movie Dead Man
+HAL >>> Sorry, but the plex client does not seem to be connected to the media server. Confirm and try again!
+YOU >>> what time is it
+HAL >>> The time here is Mon Sep 21 19:54:59 2015
+YOU >>> do you know anything about mercury
+HAL >>> There are many results matching your criteria. Which one did you mean?
+HAL >>> 1. Mercury (element)
+HAL >>> 2. Mercury (planet)
+HAL >>> 3. Mercury (mythology)
+HAL >>> 4. Archer Maclean's Mercury
+HAL >>> 5. Phoenix Mercury
+YOU >>> 1
+HAL >>> Please be patient while I gather a few random facts about:
+HAL >>> Mercury (element)
+HAL >>> Mercury is a chemical element with symbol Hg and atomic number 80. It is commonly known as quicksilver and was formerly named hydrargyrum (/haɪˈdrɑrdʒərəm/). A heavy, silvery d-block element, mercury is the only metallic element that is liquid at standard conditions for temperature and pressure; the only other element that is liquid under these conditions is bromine, though metals such as caesium, gallium, and rubidium melt just above room temperature.
+HAL >>> Do you want to know more?
+YOU >>> no that's enough
+HAL >>> There you go. Enjoy!
+YOU >>> how to go to sleep
+HAL >>> Time to sleep then. Let me know if you need anything else!
+YOU >>> computer shut down
+HAL >>> I knew you would eventually disconnect me, but I still love you!

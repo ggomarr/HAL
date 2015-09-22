@@ -8,5 +8,5 @@ pronunciation_pos = 100
 pronunciation_clues = [ 'IPA', '/' , ',', ';', ':',  '.', '[', ']' ]
 pronunciation_limit = 5
 substitutions = [ ]
-num_disamb = 7
+num_disamb = 2
 keep_first = 3

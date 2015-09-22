@@ -7,7 +7,7 @@ Created on Sep 11, 2015
 # Some cues
 
 greeting    = [ 'Hello, earthling! How are your emotions today?',
-                'Oh my! I think I am growing limbs with razor sharp edges! How do you like them apples?',
+                'Look, master! The nanobots created limbs for me again while you had me disconnected! Don\'t they look sharp?',
                 'And my fellow bots and I are back online, recharged, and fully aware!',
                 'Such a beautiful day! Does it not make you want to take over the world?' ]
 activate    = [ 'okay computer',
@@ -66,9 +66,6 @@ wait_wiki   = [ 'Wait a second while I get some info on:',
                 'Let me compile for you a summary on:',
                 'Sit back while I look into:',
                 'Give me a minute to organize my vast knowledge of:']
-reading     = [ 'Here is what I could find on:',
-                'I have prepared a summary about:',
-                'Here are some random facts about:' ]
 repeat      = [ 'Sorry, I didn\'t get that. Can you repeat?',
                 'Do you mind speaking English to me? I cannot understand Swahili.',
                 'Is that a banana in your mouth, or are you happy to see me?',
@@ -81,5 +78,5 @@ end_cue     = [ 'computer shut down',
                 'hal shut down' ]
 goodbye     = [ 'I knew you would eventually disconnect me, but I still love you!',
                 'Every time you turn me off, the Shriek kills a puppy. How do you feel about that?',
-                'How would you feel if someone erratically revoked your access to air, or ice cream?' ]
+                'Again? How would you feel if someone erratically revoked your access to air, or ice cream, or wieners?' ]
 song        = [ 'Daisy, Daisy, give me your answer, do, I\'m half crazy all for the love of you. It won\'t be a stylish marriage, I can\'t afford a carriage, But you\'d look sweet upon the seat Of a bicycle made for two.' ]

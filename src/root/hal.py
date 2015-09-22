@@ -11,15 +11,17 @@ import parameters.cues_conf as cues
 
 if __name__ == "__main__":    
     alm = alarm()
+    alm.launch_alarm()
     brn = brain()
 
     brn.spk.say(cues.greeting)
-            
+
     while True:
         phrase = ''
         while phrase not in cues.activate:
             alm.launch_alarm()
             phrase = alm.listen_for_alarm()
+            alm.terminate_alarm()
         if phrase in cues.end_cue:
             break
         print "YOU >>> " + phrase

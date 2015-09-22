@@ -12,6 +12,10 @@ The interface can do the following:
 
 The framework is flexible enough for other actions to be incorporated with relative ease.
 
+To launch HAL, run the script /src/root/hal.py. It works well under eclipse, but you may need to modify some imports to get it to run from other environments.
+
+There is a sample output in /01 Output/20150921195817/20150921195817.txt. The video of that output is available at https://youtu.be/YKlop6htKGM. Enjoy!
+
 ## Description
 
 HAL has two operating modes:

@@ -27,7 +27,7 @@ serve       = [ 'What can I do for you?',
                 'I am here to serve. How can I serve you now?',
                 'Is there anything I can support you with?',
                 'Other than breaking the three laws of robotics, how can I be of assistance?' ]
-police      = [ 'Calling the police to: 36 Malaya Bronnaya, apartment 33. The police should be here in: 4 minutes.']
+police      = [ 'Calling the police to: 26 Malaya Bronnaya, apartment 13. The police should be here in: 4 minutes.']
 unwatched   = [ 'Should I search for unwatched shows only?',
                 'Can I limit my exploratory efforts to media you have not consumed yet?',
                 'Would you want new stuff only?' ]
